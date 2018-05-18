@@ -1,0 +1,15 @@
+import Vue from 'vue';
+import Router from 'vue-router';
+
+Vue.use(Router);
+
+export function createRouter() {
+  return new Router({
+    mode: 'history',
+    routes: [
+      { path: '/', component: () => import(/* webpackChunkName: "home" */ '@/components/Home') },
+      { path: '/foo', component: () => import(/* webpackChunkName: "foo" */ '@/components/Foo') },
+      { path: '/item/:id', component: () => import(/* webpackChunkName: "item" */ '@/components/Item') },
+    ]
+  });
+}
